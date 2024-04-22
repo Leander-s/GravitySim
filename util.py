@@ -7,6 +7,7 @@ Solar_Mass = 1.9885*pow(10, 30)
 Earth_Radius = 6378100
 Earth_Mass = 5.9722 * pow(10, 24)
 AU = 1.495978707 * pow(10, 11)
+LY = 9.4607 * pow(10, 15)
 
 def draw_circle(surface, x: int, y: int, r: int, color: tuple):
     pg.draw.circle(surface, color, (x, y), r)

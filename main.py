@@ -1,11 +1,11 @@
 from Window import Window, pg
 from world import World, Celest
 from camera import Camera
-from util import draw_text, TickCounter, Solar_Mass, Solar_Radius, Earth_Mass, Earth_Radius, AU
+from util import draw_text, TickCounter, Solar_Mass, Solar_Radius, Earth_Mass, Earth_Radius, AU, LY
 
 
 def main():
-    mainWindow = Window("Gravity Simulation", 1600, 800)
+    mainWindow = Window("Gravity Simulation", 1920, 1080)
     Sol: list[Celest] = [
         Celest((0, 0), Solar_Radius, (0, 0),
                Solar_Mass, (255, 240, 233), "Sun"),
@@ -26,9 +26,23 @@ def main():
         Celest((1726000000, 0), 1.116 * Earth_Radius, (0, 83679),
                1.374 * Earth_Mass, (190, 140, 140), "Trappist_1b"),
         Celest((0.0158 * AU, 0), 1.097 * Earth_Radius, (0, 70972),
-               1.308 * Earth_Mass, (140, 140, 180), "Trappist_1c")
+               1.308 * Earth_Mass, (140, 140, 180), "Trappist_1c"),
+        Celest((0.02227 * AU, 0), 0.788 * Earth_Radius, (0, 59833),
+               0.388 * Earth_Mass, (130, 130, 180), "Trappist-1d")
     ]
-    mainWorld = World(Trappist_1)
+    Test_System:list[Celest] = [
+        Celest((0, 0), 25000000000, (0, 0), 8.54 * pow(10, 36), (100, 40, 40), "Sagittarius A*"),
+        Celest((LY, 0), Solar_Radius * 2, (0, 300000), 8 * Solar_Mass, (255, 230, 250), "StarA"),
+        Celest((2 * LY, 0), Solar_Radius * 1.4, (0, 100000), 4 * Solar_Mass, (255, 230, 250), "StarB"),
+        Celest((2 * LY - 0.5 * AU, 0), 3 * Earth_Radius, (0, 140000), 8 * Earth_Mass, (120, 140, 150), "StarB-b"),
+        Celest((-LY, AU), Solar_Radius * 9, (0, -299000), 13 * Solar_Mass, (255, 230, 250), "StarC"),
+        Celest((0.5 * LY, LY), Solar_Radius * 3, (-200000, 30000), 8 * Solar_Mass, (255, 230, 250), "StarD"),
+        Celest((LY, -LY), Solar_Radius * 0.5, (150000, 150000), 0.3 * Solar_Mass, (255, 230, 250), "StarE"),
+        Celest((4 * LY, 2 * -LY), Solar_Radius * 2, (60000, 80000), 8 * Solar_Mass, (255, 230, 250), "StarF"),
+        Celest((LY, LY), Solar_Radius * 1, (-15000, 150000), 1 * Solar_Mass, (255, 230, 250), "StarG"),
+        Celest((LY + AU, LY), Earth_Radius, (-15000, 180000), Earth_Mass, (255, 230, 250), "StarG-a"),
+    ]
+    mainWorld = World(Test_System)
     mainCamera = Camera(mainWorld, mainWindow, (0, 0))
     ticker = TickCounter()
     warp = 1
