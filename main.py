@@ -30,19 +30,23 @@ def main():
         Celest((0.02227 * AU, 0), 0.788 * Earth_Radius, (0, 59833),
                0.388 * Earth_Mass, (130, 130, 180), "Trappist-1d")
     ]
-    Test_System:list[Celest] = [
+    Galaxy:list[Celest] = [
         Celest((0, 0), 25000000000, (0, 0), 8.54 * pow(10, 36), (100, 40, 40), "Sagittarius A*"),
-        Celest((LY, 0), Solar_Radius * 2, (0, 300000), 8 * Solar_Mass, (255, 230, 250), "StarA"),
-        Celest((2 * LY, 0), Solar_Radius * 1.4, (0, 100000), 4 * Solar_Mass, (255, 230, 250), "StarB"),
-        Celest((2 * LY - 0.5 * AU, 0), 3 * Earth_Radius, (0, 140000), 8 * Earth_Mass, (120, 140, 150), "StarB-b"),
-        Celest((-LY, AU), Solar_Radius * 9, (0, -299000), 13 * Solar_Mass, (255, 230, 250), "StarC"),
-        Celest((0.5 * LY, LY), Solar_Radius * 3, (-200000, 30000), 8 * Solar_Mass, (255, 230, 250), "StarD"),
-        Celest((LY, -LY), Solar_Radius * 0.5, (150000, 150000), 0.3 * Solar_Mass, (255, 230, 250), "StarE"),
-        Celest((4 * LY, 2 * -LY), Solar_Radius * 2, (60000, 80000), 8 * Solar_Mass, (255, 230, 250), "StarF"),
-        Celest((LY, LY), Solar_Radius * 1, (-15000, 150000), 1 * Solar_Mass, (255, 230, 250), "StarG"),
-        Celest((LY + AU, LY), Earth_Radius, (-15000, 180000), Earth_Mass, (255, 230, 250), "StarG-a"),
+        Celest((LY, 0), Solar_Radius * 2, (0, 0), 8 * Solar_Mass, (255, 230, 250), "StarA", "Sagittarius A*"),
+        Celest((2 * LY, 0), Solar_Radius * 1.4, (0, 0), 4 * Solar_Mass, (255, 230, 250), "StarB", "Sagittarius A*"),
+        Celest((2 * LY - 0.5 * AU, 0), 3 * Earth_Radius, (0, 0), 8 * Earth_Mass, (120, 140, 150), "StarB-b", "Sagittarius A*"),
+        Celest((-LY, AU), Solar_Radius * 9, (0, 0), 13 * Solar_Mass, (255, 230, 250), "StarC", "Sagittarius A*"),
+        Celest((0.5 * LY, LY), Solar_Radius * 3, (0, 0), 8 * Solar_Mass, (255, 230, 250), "StarD", "Sagittarius A*"),
+        Celest((LY, -LY), Solar_Radius * 0.5, (0, 0), 0.3 * Solar_Mass, (255, 230, 250), "StarE", "Sagittarius A*"),
+        Celest((4 * LY, 2 * -LY), Solar_Radius * 2, (0, 0), 8 * Solar_Mass, (255, 230, 250), "StarF", "Sagittarius A*"),
+        Celest((LY, LY), Solar_Radius * 1, (0, 0), 1 * Solar_Mass, (255, 230, 250), "StarG", "Sagittarius A*"),
+        Celest((LY + AU, LY), Earth_Radius, (0, 0), Earth_Mass, (255, 230, 250), "StarG-a", "Sagittarius A*"),
     ]
-    mainWorld = World(Test_System)
+    Test_System:list[Celest] = [
+        Celest((0, 0), Solar_Radius, (0, 0), Solar_Mass, (255, 255, 255), "Sun"),   
+        Celest((0, 0.5 * AU), Earth_Radius, (0, 0), Earth_Mass, (140, 170, 200), "Earth", "Sun")
+    ]
+    mainWorld = World(Galaxy)
     mainCamera = Camera(mainWorld, mainWindow, (0, 0))
     ticker = TickCounter()
     warp = 1
