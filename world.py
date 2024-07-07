@@ -3,7 +3,8 @@ from math import sqrt
 
 
 class Celest:
-    def __init__(self, pos: tuple, radius: float, vel: tuple, mass: float, color: tuple, name: str = "No name", orbitBody = None):
+    def __init__(self, pos: tuple, radius: float, vel: tuple, mass: float,
+                 color: tuple, name: str = "No name", orbitBody=None):
         self.pos = pos
         self.name = name
         self.vel = vel
@@ -23,7 +24,7 @@ class World:
 
         for celest in self.objects:
             other = self.getObject(celest.orbitBody)
-            if other == None: 
+            if other is None:
                 continue
             dist = (celest.pos[0] - other.pos[0],
                     celest.pos[1] - other.pos[1])
@@ -42,7 +43,6 @@ class World:
             gForce = term / totalDist**2
             vel = sqrt((gForce * totalDist)/celest.mass)
             celest.vel = (partY * vel, partX*vel)
-
 
     def getObject(self, name: str):
         for object in self.objects:
